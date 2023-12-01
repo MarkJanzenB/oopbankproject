@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 public class Bank_DashboardContainer extends javax.swing.JFrame {
     private UserAccount user;
     private JPanel balancePanel;
+    private JPanel sendMoneyBalancePanel;
     private JLabel utilityBillsIcon;
     private JLabel authIcon;
     private JLabel transferMoneyIcon;
@@ -24,7 +25,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         dashboard1.setUser(user);
         accountDetails1.setUser(user);
     }
-
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,6 +35,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new bank.program.dashboard.Components.Dashboard();
         accountDetails1 = new bank.program.dashboard.Components.AccountDetails();
+        sendMoney1 = new bank.program.dashboard.Components.SendMoney();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +48,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab1", dashboard1);
         jTabbedPane1.addTab("tab2", accountDetails1);
+        jTabbedPane1.addTab("tab3", sendMoney1);
 
         MainPanel.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1190, 670));
 
@@ -75,6 +78,8 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
                 }
             }  
         });
+        
+     
                     
       balancePanel = new JPanel();
       balancePanel = dashboard1.getBalancePanel();
@@ -84,8 +89,16 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
                jTabbedPane1.setSelectedIndex(1);
                 backIcon.setVisible(true);
             }
-        });
+      });
       
+      sendMoneyBalancePanel = new JPanel();
+      sendMoneyBalancePanel = sendMoney1.getBalancePanel();
+      sendMoneyBalancePanel.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("sendMoneyBalancePanel clicked");
+            }
+      });
       
       utilityBillsIcon = new JLabel();
       utilityBillsIcon = dashboard1.getUtilityBillsIcon();
@@ -100,18 +113,19 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
       authIcon.addMouseListener(new MouseAdapter() {
           @Override
         public void mouseClicked(MouseEvent e) {
-                
                 JOptionPane.showMessageDialog(null, "authentication JFrame will be Opened");
             }  
         });
+  
       transferMoneyIcon = new JLabel();
       transferMoneyIcon = dashboard1.getTransferMoneyIcon();
       transferMoneyIcon.addMouseListener(new MouseAdapter() {
           @Override
         public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(null, "transfer Money JFrame will be Opened");
+               
             }  
         });
+      
       customerSupportIcon = new JLabel();
       customerSupportIcon = dashboard1.getCustomerSupportIcon();
       customerSupportIcon.addMouseListener(new MouseAdapter() {
@@ -128,5 +142,6 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
     private javax.swing.JLabel backIcon;
     private bank.program.dashboard.Components.Dashboard dashboard1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private bank.program.dashboard.Components.SendMoney sendMoney1;
     // End of variables declaration//GEN-END:variables
 }

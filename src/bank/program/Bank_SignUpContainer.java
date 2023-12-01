@@ -39,7 +39,6 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
             user.setAddress(personal_Information1.getAddressTF().getText());
             user.setEmail(personal_Information1.getEmailAddressTF().getText());
             user.setPassword(String.valueOf(personal_Information1.getPassTF().getPassword()));
-            user.setInitBalance();
             jTabbedPane1.setSelectedIndex(1);
        });
        

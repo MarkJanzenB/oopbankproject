@@ -20,7 +20,10 @@ public class SendMoney extends javax.swing.JPanel {
     public void setUser(UserAccount user) {
         this.user = user;
     }
-  
+
+    public JPanel getBalancePanel() {
+        return balancePanel;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

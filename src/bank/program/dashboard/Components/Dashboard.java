@@ -20,10 +20,17 @@ public class Dashboard extends javax.swing.JPanel {
     public void setUser(UserAccount user) {
         this.user = user;
         userName.setText(user.getFirstname()+" "+user.getLastname());
+        balanceValue.setText(String.valueOf(user.getBalance()));
+        
+            
     }
     
     public JLabel getAuthIcon() {
         return authIcon;
+    }
+
+    public void setBalanceValue(JLabel balanceValue) {
+        this.balanceValue = balanceValue;
     }
 
     public JPanel getBalancePanel() {
@@ -69,7 +76,7 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/profile-user(64px).png"))); // NOI18N
 
         userName.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        userName.setText("Aeron Clyde Espina");
+        userName.setText("username");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/notification (1).png"))); // NOI18N
 
@@ -88,7 +95,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         balanceValue.setFont(new java.awt.Font("Bahnschrift", 1, 48)); // NOI18N
         balanceValue.setForeground(new java.awt.Color(51, 51, 51));
-        balanceValue.setText("10,000");
+        balanceValue.setText("balancevalue");
 
         javax.swing.GroupLayout balancePanelLayout = new javax.swing.GroupLayout(balancePanel);
         balancePanel.setLayout(balancePanelLayout);
@@ -100,9 +107,9 @@ public class Dashboard extends javax.swing.JPanel {
                     .addGroup(balancePanelLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(44, 44, 44)
-                        .addComponent(balanceValue, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(balanceValue, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         balancePanelLayout.setVerticalGroup(
             balancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

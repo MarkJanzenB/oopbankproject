@@ -64,7 +64,7 @@ public class Bank_LogIn extends javax.swing.JFrame {
         jLabel4.setText("Password:");
 
         signInBTN.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
-        signInBTN.setText("Sign-In");
+        signInBTN.setText("Sign Up");
 
         logInBTN.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         logInBTN.setText("Log-In");

@@ -14,6 +14,13 @@ public class AccountDetails extends javax.swing.JPanel {
 
     public void setUser(UserAccount user) {
         this.user = user;
+        userName.setText(user.getFirstname()+" "+user.getLastname());
+        email.setText(user.getEmail());
+        mobilePhone.setText(user.getmobileNumber());
+        accountNumber.setText(String.valueOf(user.getAccountnum()));
+        address.setText(user.getAddress());
+        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -22,12 +29,10 @@ public class AccountDetails extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        accountStatus = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         accountNumber = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -47,37 +52,29 @@ public class AccountDetails extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/profile-user(64px).png"))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("ACCOUNT STATUS:");
-
-        accountStatus.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
-        accountStatus.setForeground(new java.awt.Color(51, 51, 51));
-        accountStatus.setText("ACTIVE");
-
         jLabel12.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("ACCOUNT NUMBER:");
 
         accountNumber.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         accountNumber.setForeground(new java.awt.Color(51, 51, 51));
-        accountNumber.setText("ABC-123-XYZ");
+        accountNumber.setText("idnum");
 
         jLabel3.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("NAME:");
 
-        name.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
-        name.setForeground(new java.awt.Color(51, 51, 51));
-        name.setText("username");
+        userName.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        userName.setForeground(new java.awt.Color(51, 51, 51));
+        userName.setText("username");
 
         jLabel9.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("EMAIL ADDRESS:");
+        jLabel9.setText("EMAIL :");
 
         email.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         email.setForeground(new java.awt.Color(51, 51, 51));
-        email.setText("aeron@gmail.com");
+        email.setText("email");
 
         jLabel7.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -85,15 +82,15 @@ public class AccountDetails extends javax.swing.JPanel {
 
         address.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         address.setForeground(new java.awt.Color(51, 51, 51));
-        address.setText("Lawaan-1, Talisay City Cebu");
+        address.setText("address");
 
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("MOBILE PHONE:");
+        jLabel5.setText("MOBILE :");
 
         mobilePhone.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         mobilePhone.setForeground(new java.awt.Color(51, 51, 51));
-        mobilePhone.setText("1234565789");
+        mobilePhone.setText("number");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,45 +120,43 @@ public class AccountDetails extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(email))
+                        .addGap(182, 182, 182)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(mobilePhone))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(name)))
-                                .addGap(222, 222, 222)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(accountStatus))
+                                        .addComponent(userName)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(accountNumber))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(address))
+                                        .addComponent(accountNumber))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(address))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(334, 334, 334)
+                                .addComponent(jLabel15))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(email))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(477, 477, 477)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(521, 521, 521)
                         .addComponent(jLabel2)))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,26 +166,26 @@ public class AccountDetails extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel11)
-                    .addComponent(accountStatus)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(accountNumber))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(mobilePhone)
-                    .addComponent(jLabel12)
-                    .addComponent(accountNumber))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(mobilePhone))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(address)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(email))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(address))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,11 +196,9 @@ public class AccountDetails extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountNumber;
-    private javax.swing.JLabel accountStatus;
     private javax.swing.JLabel address;
     private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -216,6 +209,6 @@ public class AccountDetails extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel mobilePhone;
-    private javax.swing.JLabel name;
+    private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }

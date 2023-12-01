@@ -26,6 +26,14 @@ public class DAOImplementations implements DAOInterface{
     }
 
     @Override
+    public boolean checkConnection(Connection con) throws SQLException{
+        
+//       if(con)
+        return false;
+    }
+    
+
+    @Override
     public void insertNewUser(UserAccount user) {
         String query = "INSERT INTO users("
                 + "firstname, "
@@ -47,7 +55,7 @@ public class DAOImplementations implements DAOInterface{
                 st.setString(5, user.getPin());
                 st.setString(6, user.getEmail());
                 st.setString(7, user.getPassword());
-                st.setString(8, "0");
+                st.setString(8, "10000");
                
                 st.executeUpdate();
                 st.close();
@@ -70,6 +78,7 @@ public class DAOImplementations implements DAOInterface{
                 
                 if(rs.next()){ 
                     // Check if the result set contains at least one row
+                    user.setAccountnum(Integer.valueOf(rs.getString(("UID"))));
                     user.setFirstname(rs.getString("firstname"));
                     user.setLastname(rs.getString("lastname"));
                     user.setAddress(rs.getString("address"));
@@ -77,9 +86,9 @@ public class DAOImplementations implements DAOInterface{
                     user.setPin(rs.getString("pin_num"));
                     user.setEmail(rs.getString("email"));
                     user.setPassword(rs.getString("password"));
-                    user.setInitBalance();
+                    user.setBalance(Double.valueOf(rs.getString("balance")));
                 }
-                else{
+                else {
                     System.out.println("rs is null");
                     return null;
                 }
@@ -87,6 +96,7 @@ public class DAOImplementations implements DAOInterface{
                 con.close();
         } catch (SQLException e) {
                 System.out.println(e.getLocalizedMessage());
+                return null;
         }
         
         return user;

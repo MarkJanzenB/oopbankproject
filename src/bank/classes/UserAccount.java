@@ -3,6 +3,7 @@ package bank.classes;
 
 public class UserAccount extends UserDetails{
     
+    private int accountnum;
     private String pin;
     private String mobileNumber;
     private String email;
@@ -21,17 +22,10 @@ public class UserAccount extends UserDetails{
         this.balance = balance;
     }
     
-    public void setInitBalance() {
-        this.balance = 10000.00;
-    }
-    
-    
-    
     
     public UserAccount() {
     }
     
-
 
     public String getmobileNumber() {
         return mobileNumber;
@@ -46,6 +40,15 @@ public class UserAccount extends UserDetails{
         return pin;
     }
 
+    public int getAccountnum() {
+        return accountnum;
+    }
+
+    public void setAccountnum(int accountnum) {
+        this.accountnum = accountnum;
+    }
+    
+    
     public void setPin(String pin) {
         this.pin = pin;
     }

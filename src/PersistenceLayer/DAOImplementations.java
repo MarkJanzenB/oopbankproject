@@ -14,7 +14,7 @@ public class DAOImplementations implements DAOInterface{
     
     private UserAccount user;
     private DAOInterface dao;
-    private String url = "jdbc:mysql://localhost:3306/bankoop";
+    private String url = "jdbc:mysql://localhost:3306/oopbank";
     private String userName = "root";   
     private String passWord = "";
 

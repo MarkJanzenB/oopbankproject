@@ -29,8 +29,8 @@ public class Dashboard extends javax.swing.JPanel {
         return authIcon;
     }
 
-    public void setBalanceValue(JLabel balanceValue) {
-        this.balanceValue = balanceValue;
+    public void setBalanceValue(String balanceValue) {
+        this.balanceValue.setText(balanceValue);
     }
 
     public JPanel getBalancePanel() {

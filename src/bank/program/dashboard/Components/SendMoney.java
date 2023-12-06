@@ -19,6 +19,12 @@ public class SendMoney extends javax.swing.JPanel {
 
     public void setUser(UserAccount user) {
         this.user = user;
+        balanceValue.setText(String.valueOf(user.getBalance()));
+
+    }
+
+    public void setBalanceValue(String balanceValue) {
+        this.balanceValue.setText(balanceValue);
     }
 
     public JPanel getBalancePanel() {
@@ -70,9 +76,9 @@ public class SendMoney extends javax.swing.JPanel {
                     .addGroup(balancePanelLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(44, 44, 44)
-                        .addComponent(balanceValue, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(balanceValue, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
         balancePanelLayout.setVerticalGroup(
             balancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

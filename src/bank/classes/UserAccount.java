@@ -8,7 +8,7 @@ public class UserAccount extends UserDetails{
     private String mobileNumber;
     private String email;
     private String password;
-    private Double balance;
+    private Double balance=1000.00;
 
     public UserAccount(Double balance) {
         this.balance = balance;

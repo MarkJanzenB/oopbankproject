@@ -3,12 +3,16 @@ package bank.program;
 
 import PersistenceLayer.DAOImplementations;
 import bank.classes.UserAccount;
+import bank.program.SignUpComponents.Bank_OTP;
 import bank.program.SignUpComponents.Personal_Information;
 import bank.program.dashboard.Components.Dashboard;
+import bank.classes.BankSMS;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.util.Random;
+
 
 
 public class Bank_SignUpContainer extends javax.swing.JFrame {
@@ -19,8 +23,10 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
     private JButton personlInfoBTN;
     private JButton secuirityBTN;
     private Bank_LogIn loginPanel;
+    private Bank_OTP otp;
     private JFrame frame;
-    
+    private Random PinGenerator;
+    private int otpPin;
 
     public Bank_SignUpContainer(UserAccount user, DAOImplementations dao) {
         this.dao = dao;
@@ -45,12 +51,22 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
        secuirityBTN = new JButton();
        secuirityBTN = secuirity_Details2.getDoneBTN();
        secuirityBTN.addActionListener(e -> {      
-            //implementation of DAO HERE
-           user.setPin(String.valueOf(secuirity_Details2.getPinTF().getPassword())); 
-           dao.insertNewUser(user);
-           this.dispose();
-           dashboard = new Bank_DashboardContainer(user);
-           dashboard.setVisible(true);
+           PinGenerator= new Random();
+           otpPin = 100000 + PinGenerator.nextInt(900000);
+           
+           //ipasa sa SMS class
+           //instantiate SMS(otpPin)
+           new BankSMS(String.valueOf(otpPin));
+
+           otp=new Bank_OTP(String.valueOf(otpPin));
+           otp.setVisible(true);
+//           user.setPin(String.valueOf(secuirity_Details2.getPinTF().getPassword())); 
+
+//           dao.insertNewUser(user);
+//           this.dispose();
+//           dashboard = new Bank_DashboardContainer(user);
+//           dashboard.setVisible(true);
+
        });
         
        backLabel.addMouseListener(new MouseAdapter() {
@@ -65,6 +81,7 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
                 }
             }  
         });
+       
         
     }
     @SuppressWarnings("unchecked")

@@ -55,7 +55,7 @@ public class DAOImplementations implements DAOInterface{
                 st.setString(5, user.getPin());
                 st.setString(6, user.getEmail());
                 st.setString(7, user.getPassword());
-                st.setString(8, "10000");
+                st.setDouble(8, user.getBalance());
                
                 st.executeUpdate();
                 st.close();

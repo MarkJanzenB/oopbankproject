@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
 
+
 public class Secuirity_Details extends javax.swing.JPanel {
     
     private UserAccount user;

@@ -24,6 +24,8 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         initComponentsListeners();
         dashboard1.setUser(user);
         accountDetails1.setUser(user);
+        sendMoney1.setUser(user);
+        
     }
    
     @SuppressWarnings("unchecked")
@@ -72,7 +74,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         backIcon.setVisible(false);
         backIcon.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
-                if(jTabbedPane1.getSelectedIndex() == 1){
+                if(jTabbedPane1.getSelectedIndex() != 0){
                     backIcon.setVisible(false);
                     jTabbedPane1.setSelectedIndex(0);
                 }
@@ -91,14 +93,13 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
             }
       });
       
-      sendMoneyBalancePanel = new JPanel();
-      sendMoneyBalancePanel = sendMoney1.getBalancePanel();
-      sendMoneyBalancePanel.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("sendMoneyBalancePanel clicked");
-            }
-      });
+//      sendMoneyBalancePanel = new JPanel();
+//      sendMoneyBalancePanel = sendMoney1.getBalancePanel();
+//      sendMoneyBalancePanel.addMouseListener(new MouseAdapter(){
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//            }
+//      });
       
       utilityBillsIcon = new JLabel();
       utilityBillsIcon = dashboard1.getUtilityBillsIcon();
@@ -122,7 +123,8 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
       transferMoneyIcon.addMouseListener(new MouseAdapter() {
           @Override
         public void mouseClicked(MouseEvent e) {
-               
+                jTabbedPane1.setSelectedIndex(2);
+                backIcon.setVisible(true);
             }  
         });
       

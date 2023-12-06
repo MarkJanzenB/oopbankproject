@@ -81,6 +81,8 @@ public class Personal_Information extends javax.swing.JPanel {
         lastnameTF = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 51, 51));
+        setMaximumSize(new java.awt.Dimension(743, 502));
+        setMinimumSize(new java.awt.Dimension(743, 502));
 
         jLabel1.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel1.setText("PERSONAL DETAILS");

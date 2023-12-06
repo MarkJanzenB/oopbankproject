@@ -50,22 +50,23 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
        
        secuirityBTN = new JButton();
        secuirityBTN = secuirity_Details2.getDoneBTN();
-       secuirityBTN.addActionListener(e -> {      
-           PinGenerator= new Random();
-           otpPin = 100000 + PinGenerator.nextInt(900000);
+       secuirityBTN.addActionListener(e -> { 
            
-           //ipasa sa SMS class
-           //instantiate SMS(otpPin)
-           new BankSMS(String.valueOf(otpPin));
-
-           otp=new Bank_OTP(String.valueOf(otpPin));
-           otp.setVisible(true);
-//           user.setPin(String.valueOf(secuirity_Details2.getPinTF().getPassword())); 
-
-//           dao.insertNewUser(user);
-//           this.dispose();
-//           dashboard = new Bank_DashboardContainer(user);
-//           dashboard.setVisible(true);
+            PinGenerator= new Random();
+           if(otpPin == 0){
+                otpPin = 100000 + PinGenerator.nextInt(900000);
+                //incase the SMS will fail the pin can be retrieved in CLI
+                System.out.println("otpPin inside condition: " + otpPin);
+//                new BankSMS(String.valueOf(otpPin), user.getmobileNumber());      
+                otp = new Bank_OTP(String.valueOf(otpPin), user, dao);
+                otp.setVisible(true);
+           }
+           else{
+                //incase the SMS will fail the pin can be retrieved in CLI
+               System.out.println("Entered else block. otpPin value: " + otpPin);
+               otp = new Bank_OTP(String.valueOf(otpPin), user, dao);
+               otp.setVisible(true);
+           }
 
        });
         

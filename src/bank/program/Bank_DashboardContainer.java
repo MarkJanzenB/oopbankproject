@@ -3,6 +3,7 @@ package bank.program;
 
 import bank.classes.UserAccount;
 import bank.program.dashboard.Components.Dashboard;
+import java.awt.HeadlessException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
@@ -18,6 +19,11 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
     private JLabel authIcon;
     private JLabel transferMoneyIcon;
     private JLabel customerSupportIcon;
+
+    public Bank_DashboardContainer(){
+        initComponents();
+        initComponentsListeners();
+    }
     
     public Bank_DashboardContainer(UserAccount user) {
         initComponents();
@@ -38,6 +44,8 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         dashboard1 = new bank.program.dashboard.Components.Dashboard();
         accountDetails1 = new bank.program.dashboard.Components.AccountDetails();
         sendMoney1 = new bank.program.dashboard.Components.SendMoney();
+        customerSupport1 = new bank.program.dashboard.Components.CustomerSupport();
+        payBills1 = new bank.program.dashboard.Components.PayBills();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +59,8 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         jTabbedPane1.addTab("tab1", dashboard1);
         jTabbedPane1.addTab("tab2", accountDetails1);
         jTabbedPane1.addTab("tab3", sendMoney1);
+        jTabbedPane1.addTab("tab4", customerSupport1);
+        jTabbedPane1.addTab("tab5", payBills1);
 
         MainPanel.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1190, 670));
 
@@ -106,9 +116,11 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
       utilityBillsIcon.addMouseListener(new MouseAdapter() {
           
         public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(null, "Utilities Bill JFrame will be Opened");
+                jTabbedPane1.setSelectedIndex(4);
+                backIcon.setVisible(true);
             }  
         });
+      
       authIcon = new JLabel();
 //      authIcon = dashboard1.getAuthIcon();
       authIcon.addMouseListener(new MouseAdapter() {
@@ -133,17 +145,24 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
       customerSupportIcon.addMouseListener(new MouseAdapter() {
           @Override      
         public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(null, "customerSupport JFrame will be Opened");
+                jTabbedPane1.setSelectedIndex(3);
+                backIcon.setVisible(true);
             }  
         });
+    }
+    
+    public static void main(String[] args) {
+        new Bank_DashboardContainer().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private bank.program.dashboard.Components.AccountDetails accountDetails1;
     private javax.swing.JLabel backIcon;
+    private bank.program.dashboard.Components.CustomerSupport customerSupport1;
     private bank.program.dashboard.Components.Dashboard dashboard1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private bank.program.dashboard.Components.PayBills payBills1;
     private bank.program.dashboard.Components.SendMoney sendMoney1;
     // End of variables declaration//GEN-END:variables
 }

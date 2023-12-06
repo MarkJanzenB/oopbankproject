@@ -1,6 +1,9 @@
 
 package bank.program.SignUpComponents;
 
+import PersistenceLayer.DAOImplementations;
+import bank.classes.UserAccount;
+import bank.program.Bank_DashboardContainer;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -8,27 +11,27 @@ import javax.swing.JTextField;
  *
  * @author markj
  */
-
-
-
 public class Bank_OTP extends javax.swing.JFrame {
-
-
+    
+    private Bank_DashboardContainer dashboard;
+    private DAOImplementations dao; 
+    private UserAccount user;
     private String pin;
 
-    
-    
-    public Bank_OTP(String pin) {
+    public Bank_OTP(String pin, UserAccount user, DAOImplementations dao) {
+        this.dao = dao;
+        this.user = user;
         initComponents();
         this.setPin(pin);
         
     }
+    
+    
 
     public JTextField getOtpField() {
         return otpField;
     }
     
-
     public void setPin(String pin) {
         this.pin = pin;
     }    
@@ -106,19 +109,17 @@ public class Bank_OTP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verifyBtnMouseClicked
-    if (otpField.getText().equals(pin)  ){
-        //proceed dashboard;
-                JOptionPane.showMessageDialog(null, "OTP Verified");
-    }else{
-        // output Joptionpane, msg  "invalid OTP";
-                JOptionPane.showMessageDialog(null, "OTP invalid");
-    }
-            // TODO add your handling code here:
+        if (otpField.getText().equals(pin)  ){
+               dao.insertNewUser(user);
+               this.dispose();
+               dashboard = new Bank_DashboardContainer(user);
+               dashboard.setVisible(true);
+        }else{
+               JOptionPane.showMessageDialog(null, "OTP invalid");
+        }
     }//GEN-LAST:event_verifyBtnMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

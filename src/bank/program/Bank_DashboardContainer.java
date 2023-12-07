@@ -56,7 +56,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         backIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MainPanel.add(backIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 40, 40));
 
-        jTabbedPane1.addTab("tab1", dashboard1);
+        jTabbedPane1.addTab("tab5", dashboard1);
         jTabbedPane1.addTab("tab2", accountDetails1);
         jTabbedPane1.addTab("tab3", sendMoney1);
         jTabbedPane1.addTab("tab4", customerSupport1);
@@ -122,7 +122,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         });
       
       authIcon = new JLabel();
-//      authIcon = dashboard1.getAuthIcon();
+      authIcon = dashboard1.getAuthIcon();
       authIcon.addMouseListener(new MouseAdapter() {
           @Override
         public void mouseClicked(MouseEvent e) {

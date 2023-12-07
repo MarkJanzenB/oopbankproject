@@ -3,7 +3,6 @@ package bank.program;
 
 import PersistenceLayer.DAOImplementations;
 import bank.classes.UserAccount;
-import bank.program.SignUpComponents.Bank_OTP;
 import bank.program.SignUpComponents.Personal_Information;
 import bank.program.dashboard.Components.Dashboard;
 import bank.classes.BankSMS;
@@ -12,6 +11,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import static okhttp3.CertificatePinner.pin;
 
 
 
@@ -22,20 +24,23 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
     private Bank_DashboardContainer dashboard;
     private JButton personlInfoBTN;
     private JButton secuirityBTN;
+    private JButton otpBTN;
     private Bank_LogIn loginPanel;
-    private Bank_OTP otp;
     private JFrame frame;
+    private JTextField OTPpinTF;
+    private JTextField securityTF;
     private Random PinGenerator;
     private int otpPin;
-
-    public Bank_SignUpContainer(UserAccount user, DAOImplementations dao) {
+    
+    public Bank_SignUpContainer(DAOImplementations dao) {
+        user = new UserAccount();
         this.dao = dao;
-        this.user = user;
         initComponents();
         this.setResizable(false);
         personal_Information1.setUser(user);
         secuirity_Details2.setUser(user);
         
+       //Button Logic for the Personal Details Panel
        personlInfoBTN = new JButton();
        personlInfoBTN = personal_Information1.getBtn_Next();
        personlInfoBTN.addActionListener(e ->{ 
@@ -48,28 +53,48 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(1);
        });
        
+       //The Logic for the button of Security Panel
        secuirityBTN = new JButton();
        secuirityBTN = secuirity_Details2.getDoneBTN();
-       secuirityBTN.addActionListener(e -> { 
-           
+       secuirityBTN.addActionListener(e -> {     
             PinGenerator= new Random();
            if(otpPin == 0){
                 otpPin = 100000 + PinGenerator.nextInt(900000);
                 //incase the SMS will fail the pin can be retrieved in CLI
-                System.out.println("otpPin inside condition: " + otpPin);
-//                new BankSMS(String.valueOf(otpPin), user.getmobileNumber());      
-                otp = new Bank_OTP(String.valueOf(otpPin), user, dao);
-                otp.setVisible(true);
+                System.out.println("OTP PIN IS: " + otpPin);
+//                new BankSMS(String.valueOf(otpPin), user.getmobileNumber());  COMMENT THIS FOR DEBUGGING ONLY, SMS ARE LIMITED!!
+                  securityTF = new JTextField();
+                  securityTF = secuirity_Details2.getPinTF();
+                  user.setPin(securityTF.getText());
+                  jTabbedPane1.setSelectedIndex(2);
            }
            else{
                 //incase the SMS will fail the pin can be retrieved in CLI
                System.out.println("Entered else block. otpPin value: " + otpPin);
-               otp = new Bank_OTP(String.valueOf(otpPin), user, dao);
-               otp.setVisible(true);
+               jTabbedPane1.setSelectedIndex(2);
            }
 
        });
+       
+       //This logic is for the OTP
+        OTPpinTF = new JTextField();
+        OTPpinTF = bankOTP1.getOtpField();
+        otpBTN = new JButton();
+        otpBTN = bankOTP1.getVerifyBtn();
+        otpBTN.addActionListener(e -> {
+             if (OTPpinTF.getText().equals(String.valueOf(otpPin))  ){
+                dao.insertNewUser(user);
+                user = dao.checkUserAndGetCredentials(user.getEmail(),user.getPassword());
+                dashboard = new Bank_DashboardContainer(user);
+                dashboard.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "OTP invalid");
+            }  
+        });
         
+        
+       //This is for the back button
        backLabel.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
                 if(jTabbedPane1.getSelectedIndex() == 0){
@@ -82,9 +107,11 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
                 }
             }  
         });
-       
-        
+    
     }
+    
+
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,6 +120,7 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         personal_Information1 = new bank.program.SignUpComponents.Personal_Information();
         secuirity_Details2 = new bank.program.SignUpComponents.Secuirity_Details();
+        bankOTP1 = new bank.program.SignUpComponents.BankOTP();
         backLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,6 +130,7 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab2", personal_Information1);
         jTabbedPane1.addTab("tab2", secuirity_Details2);
+        jTabbedPane1.addTab("tab3", bankOTP1);
 
         jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -30, 820, 600));
 
@@ -127,6 +156,7 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLabel;
+    private bank.program.SignUpComponents.BankOTP bankOTP1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private bank.program.SignUpComponents.Personal_Information personal_Information1;

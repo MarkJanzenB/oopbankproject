@@ -12,6 +12,6 @@ public interface DAOInterface {
     
     void insertNewUser(UserAccount user);
     UserAccount checkUserAndGetCredentials(String email, String password);
-        boolean checkConnection(Connection con) throws SQLException;
+    boolean checkConnection(Connection con) throws SQLException;
 
 }

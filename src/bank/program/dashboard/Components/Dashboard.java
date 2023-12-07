@@ -20,15 +20,18 @@ public class Dashboard extends javax.swing.JPanel {
     public void setUser(UserAccount user) {
         this.user = user;
         userName.setText(user.getFirstname()+" "+user.getLastname());
-        balanceValue.setText(String.valueOf(user.getBalance()));
-        
+        balanceValue.setText(String.valueOf(user.getBalance()));      
             
     }
-    
+
     public JLabel getAuthIcon() {
         return authIcon;
     }
 
+    public JLabel getBalanceValue() {
+        return balanceValue;
+    }
+    
     public void setBalanceValue(String balanceValue) {
         this.balanceValue.setText(balanceValue);
     }

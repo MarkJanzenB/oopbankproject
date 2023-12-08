@@ -1,7 +1,7 @@
 
 package bank.program.SignUpComponents;
 
-import PersistenceLayer.DAOImplementations;
+import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;

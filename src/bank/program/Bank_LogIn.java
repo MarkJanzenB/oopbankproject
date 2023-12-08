@@ -1,6 +1,6 @@
 package bank.program;
 
-import PersistenceLayer.DAOImplementations;
+import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import bank.program.SignUpComponents.Personal_Information;
 import java.awt.event.KeyAdapter;
@@ -11,12 +11,12 @@ import javax.swing.event.DocumentListener;
 
 public class Bank_LogIn extends javax.swing.JFrame {
     
-    private DAOImplementations dao;
+    private DatabaseImplementations dao;
     private UserAccount user;
     private Bank_SignUpContainer bankContainer;
     private Bank_DashboardContainer dashboard;
     
-    public Bank_LogIn(UserAccount user, DAOImplementations dao ) {
+    public Bank_LogIn(UserAccount user, DatabaseImplementations dao ) {
         this.user = user;
         this.dao = dao;
         this.setResizable(false);

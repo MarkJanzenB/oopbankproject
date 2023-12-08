@@ -1,7 +1,7 @@
 
 package bank.program.SignUpComponents;
 
-import PersistenceLayer.DAOImplementations;
+import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import bank.program.Bank_DashboardContainer;
 import javax.swing.JButton;
@@ -13,7 +13,7 @@ import static okhttp3.CertificatePinner.pin;
 public class BankOTP extends javax.swing.JPanel {
     
     private Bank_DashboardContainer dashboard;
-    private DAOImplementations dao; 
+    private DatabaseImplementations dao; 
     private UserAccount user;
     private String pin;
 

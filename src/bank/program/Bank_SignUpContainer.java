@@ -1,7 +1,7 @@
 
 package bank.program;
 
-import PersistenceLayer.DAOImplementations;
+import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import bank.program.SignUpComponents.Personal_Information;
 import bank.program.dashboard.Components.Dashboard;
@@ -19,7 +19,7 @@ import static okhttp3.CertificatePinner.pin;
 
 public class Bank_SignUpContainer extends javax.swing.JFrame {
     
-    private DAOImplementations dao; 
+    private DatabaseImplementations dao; 
     private UserAccount user;
     private Bank_DashboardContainer dashboard;
     private JButton personlInfoBTN;
@@ -32,7 +32,7 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
     private Random PinGenerator;
     private int otpPin;
     
-    public Bank_SignUpContainer(DAOImplementations dao) {
+    public Bank_SignUpContainer(DatabaseImplementations dao) {
         user = new UserAccount();
         this.dao = dao;
         initComponents();

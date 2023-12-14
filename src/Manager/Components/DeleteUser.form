@@ -101,7 +101,7 @@
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[60, 160]"/>
             </Property>
-            <Property name="rowHeight" type="int" value="40"/>
+            <Property name="rowHeight" type="int" value="45"/>
             <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="6f" green="89" red="39" type="rgb"/>
             </Property>

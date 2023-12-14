@@ -64,7 +64,7 @@ public class DeleteUser extends javax.swing.JPanel {
             }
         });
         jTable1.setMaximumSize(new java.awt.Dimension(60, 160));
-        jTable1.setRowHeight(45);
+        jTable1.setRowHeight(48);
         jTable1.setSelectionBackground(new java.awt.Color(57, 137, 111));
         jTable1.setShowGrid(false);
         jScrollPane1.setViewportView(jTable1);

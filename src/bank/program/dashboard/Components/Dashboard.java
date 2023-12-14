@@ -144,7 +144,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         jLabel13.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel13.setText("Authentication");
+        jLabel13.setText("Security");
 
         jLabel14.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
@@ -180,7 +180,9 @@ public class Dashboard extends javax.swing.JPanel {
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(authIcon)
-                            .addComponent(jLabel13))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel13)))
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(transferMoneyIcon)

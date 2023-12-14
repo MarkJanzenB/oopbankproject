@@ -1,10 +1,12 @@
 
-package Admin.Components;
+package Manager.Components;
 
-import CustomTableCell.TableActionCellEditor;
-import CustomTableCell.TableActionCellRender;
-import CustomTableCell.TableActionEvent;
+import CustomTableCell.TableActionCellEditorDELETE;
+import CustomTableCell.TableActionCellRenderDELETE;
+import CustomTableCell.TableActionCellRenderEDIT;
 import javax.swing.JOptionPane;
+import CustomTableCell.TableActionEventDELETE;
+import javax.swing.table.DefaultTableModel;
 
 
 public class DeleteUser extends javax.swing.JPanel {
@@ -12,6 +14,24 @@ public class DeleteUser extends javax.swing.JPanel {
       private String[] users;
     public DeleteUser() {
         initComponents();
+        String[] resultSet = {"Ac", "Espina", "1000"};
+        TableActionEventDELETE event = new TableActionEventDELETE() {
+            @Override
+            public void onDelete(int row) {
+                //JOptionPane.showMessageDialog(null, "DELETE PANEL WILL BE OPEN");
+                if(jTable1.isEditing()){
+                    jTable1.getCellEditor().stopCellEditing();
+                }
+                DefaultTableModel  model = (DefaultTableModel)jTable1.getModel();
+                model.removeRow(row);
+            }
+        };
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRenderDELETE());
+        jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditorDELETE(event));
+        
+        for (int i = 0; i < 5; i++) {
+            addRowToTable(resultSet);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -29,17 +49,14 @@ public class DeleteUser extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "FIRST NAME", "LAST NAME", "ACCOUNT NUMBER", "DELETE"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -77,6 +94,10 @@ public class DeleteUser extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void addRowToTable(Object[] data){
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.addRow(data);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

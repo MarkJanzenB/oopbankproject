@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Admin.Components;
+package Manager.Components;
 
+import CustomTableCell.TableActionCellEditorEDIT;
+import CustomTableCell.TableActionCellRenderEDIT;
+import CustomTableCell.TableActionEventEDIT;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -15,6 +19,15 @@ public class UpdateUser extends javax.swing.JPanel {
   
     public UpdateUser() {
         initComponents();
+         TableActionEventEDIT event = new TableActionEventEDIT() {
+            @Override
+            public void onEdit() {
+                JOptionPane.showMessageDialog(null, "DELETE PANEL WILL BE OPEN");
+            }
+        };
+        
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRenderEDIT());
+        jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditorEDIT(event));
     }
 
     public void setUsers(String[] users) {
@@ -50,7 +63,7 @@ public class UpdateUser extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false, false
+                true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -58,7 +71,7 @@ public class UpdateUser extends javax.swing.JPanel {
             }
         });
         jTable1.setMaximumSize(new java.awt.Dimension(60, 160));
-        jTable1.setRowHeight(40);
+        jTable1.setRowHeight(48);
         jTable1.setSelectionBackground(new java.awt.Color(57, 137, 111));
         jTable1.setShowGrid(false);
         jScrollPane1.setViewportView(jTable1);

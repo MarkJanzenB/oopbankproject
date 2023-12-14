@@ -1,15 +1,16 @@
 
 package CustomTableCell;
 
+import CustomTableCell.TableActionEventEDIT;
 
-public class PanelActionEdit extends javax.swing.JPanel {
+public class PanelActionEDIT extends javax.swing.JPanel {
 
 
-    public PanelActionEdit() {
+    public PanelActionEDIT() {
         initComponents();
     }
     
-    public void initEvent(TableActionEvent  event, int row){
+    public void initEvent(TableActionEventEDIT  event, int row){
         editBTN.addActionListener( e -> {
             event.onEdit();
         });

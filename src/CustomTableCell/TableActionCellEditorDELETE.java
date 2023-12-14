@@ -7,18 +7,18 @@ import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
 
-public class TableActionCellEditor extends DefaultCellEditor{
+public class TableActionCellEditorDELETE extends DefaultCellEditor{
     
-    private TableActionEvent event;
+    private TableActionEventDELETE event;
 
-    public TableActionCellEditor(TableActionEvent event) {
+    public TableActionCellEditorDELETE(TableActionEventDELETE event) {
         super(new JCheckBox());
         this.event = event;
     }
    
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        PanelActionEdit action = new PanelActionEdit();  
+        PanelActionDELETE action = new PanelActionDELETE();  
         action.initEvent(event, row);
         action.setBackground(table.getSelectionBackground());
         return action;

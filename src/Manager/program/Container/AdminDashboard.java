@@ -1,4 +1,4 @@
-package Admin.program.Container;
+package Manager.program.Container;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -43,9 +43,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         deleteIcon = new javax.swing.JLabel();
         TabbedpaneHolder = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        creatUsers1 = new Admin.Components.CreatUsers();
-        updateUser1 = new Admin.Components.UpdateUser();
-        deleteUser1 = new Admin.Components.DeleteUser();
+        creatUsers1 = new Manager.Components.CreatUsers();
+        updateUser2 = new Manager.Components.UpdateUser();
+        deleteUser2 = new Manager.Components.DeleteUser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,8 +93,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         TabbedpaneHolder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.addTab("tab1", creatUsers1);
-        jTabbedPane1.addTab("tab2", updateUser1);
-        jTabbedPane1.addTab("tab3", deleteUser1);
+        jTabbedPane1.addTab("tab3", updateUser2);
+        jTabbedPane1.addTab("tab3", deleteUser2);
 
         TabbedpaneHolder.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1040, 630));
 
@@ -150,14 +150,14 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TabbedpaneHolder;
-    private Admin.Components.CreatUsers creatUsers1;
+    private Manager.Components.CreatUsers creatUsers1;
     private javax.swing.JLabel createIcon;
     private javax.swing.JLabel deleteIcon;
-    private Admin.Components.DeleteUser deleteUser1;
+    private Manager.Components.DeleteUser deleteUser2;
     private javax.swing.JPanel iconHolder;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel updateIcon;
-    private Admin.Components.UpdateUser updateUser1;
+    private Manager.Components.UpdateUser updateUser2;
     // End of variables declaration//GEN-END:variables
 }

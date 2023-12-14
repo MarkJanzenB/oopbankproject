@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package CustomTableCell;
 
+import CustomTableCell.TableActionEventDELETE;
 /**
  *
  * @author Admin
  */
-public class PanelActionDelete extends javax.swing.JPanel {
+public class PanelActionDELETE extends javax.swing.JPanel {
 
-    public PanelActionDelete() {
+    public PanelActionDELETE() {
         initComponents();
     }
    
-    public void initEvent(TableActionEvent  event, int row){
+    public void initEvent(TableActionEventDELETE  event, int row){
         deleteBTN.addActionListener( e -> {
             event.onDelete(row);
         });

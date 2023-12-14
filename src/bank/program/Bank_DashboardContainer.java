@@ -19,6 +19,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
     private JLabel authIcon;
     private JLabel transferMoneyIcon;
     private JLabel customerSupportIcon;
+    private Bank_PayBillContainer pay_dashboard;
 
     public Bank_DashboardContainer(){
         initComponents();
@@ -31,8 +32,15 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         dashboard1.setUser(user);
         accountDetails1.setUser(user);
         sendMoney1.setUser(user);
+        pay_dashboard = new Bank_PayBillContainer(user);
+        pay_dashboard.setDashboard(this);
+
         
     }
+    
+    private void hideDashboard(){
+           this.setVisible(false);
+      }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -45,7 +53,6 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         accountDetails1 = new bank.program.dashboard.Components.AccountDetails();
         sendMoney1 = new bank.program.dashboard.Components.SendMoney();
         customerSupport1 = new bank.program.dashboard.Components.CustomerSupport();
-        payBills1 = new bank.program.dashboard.Components.PayBills();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +67,6 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         jTabbedPane1.addTab("tab2", accountDetails1);
         jTabbedPane1.addTab("tab3", sendMoney1);
         jTabbedPane1.addTab("tab4", customerSupport1);
-        jTabbedPane1.addTab("tab5", payBills1);
 
         MainPanel.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1190, 670));
 
@@ -110,14 +116,15 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
 //            public void mouseClicked(MouseEvent e) {
 //            }
 //      });
+
       
       utilityBillsIcon = new JLabel();
       utilityBillsIcon = dashboard1.getUtilityBillsIcon();
       utilityBillsIcon.addMouseListener(new MouseAdapter() {
           
         public void mouseClicked(MouseEvent e) {
-                jTabbedPane1.setSelectedIndex(4);
-                backIcon.setVisible(true);
+                    pay_dashboard.setVisible(true);     
+                    hideDashboard();
             }  
         });
       
@@ -149,6 +156,10 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
                 backIcon.setVisible(true);
             }  
         });
+      
+      
+      
+      
     }
     
     public static void main(String[] args) {
@@ -162,7 +173,6 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
     private bank.program.dashboard.Components.CustomerSupport customerSupport1;
     private bank.program.dashboard.Components.Dashboard dashboard1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private bank.program.dashboard.Components.PayBills payBills1;
     private bank.program.dashboard.Components.SendMoney sendMoney1;
     // End of variables declaration//GEN-END:variables
 }

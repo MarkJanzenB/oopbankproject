@@ -36,7 +36,7 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="electricity1" min="-2" pref="148" max="-2" attributes="0"/>
+                              <Component id="electricity" min="-2" pref="148" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                               <Component id="water" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
@@ -55,11 +55,6 @@
                   </Group>
               </Group>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-              <Component id="jLabel6" min="-2" pref="785" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -67,13 +62,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="cable" max="32767" attributes="0"/>
                   <Component id="water" alignment="0" max="32767" attributes="0"/>
-                  <Component id="electricity1" alignment="0" pref="152" max="32767" attributes="0"/>
+                  <Component id="electricity" alignment="0" pref="152" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -110,7 +103,7 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="waterMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="electricity1">
+    <Component class="javax.swing.JLabel" name="electricity">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Icons/home (1).png"/>
@@ -120,7 +113,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="electricity1MouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="electricityMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="cable">
@@ -158,19 +151,6 @@
           <Font name="Gill Sans Ultra Bold Condensed" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cable/Internet"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="24" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Biller: Aeron Clyde"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-            <BevelBorder/>
-          </Border>
-        </Property>
       </Properties>
     </Component>
   </SubComponents>

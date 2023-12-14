@@ -85,7 +85,8 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
              if (OTPpinTF.getText().equals(String.valueOf(otpPin))  ){
                 dao.insertNewUser(user);
                 user = dao.checkUserAndGetCredentials(user.getEmail(),user.getPassword());
-                dashboard = new Bank_DashboardContainer(user);
+                dashboard = new Bank_DashboardContainer();
+//                dashboard.setDatabase(new DatabaseImplementations());
                 dashboard.setVisible(true);
                 this.dispose();
             }else{

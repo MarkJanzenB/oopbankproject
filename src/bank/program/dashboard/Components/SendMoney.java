@@ -1,27 +1,56 @@
 
 package bank.program.dashboard.Components;
 
+import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 
 
 public class SendMoney extends javax.swing.JPanel {
     
     private UserAccount user;
+    private UserAccount updatedUser;
+    private String recipientAccountNumber;
+    private double amount;
+    private int recipientUID;
+    private int senderUID;
+    private DatabaseImplementations database;
     
     public SendMoney() {
         initComponents();
     }
 
+    public void setDatabase(DatabaseImplementations database) {
+        this.database = database;
+    }
+    
     public void setUser(UserAccount user) {
         this.user = user;
         balanceValue.setText(String.valueOf(user.getBalance()));
 
     }
+
+    public JTextField getAccntTF() {
+        return accntTF;
+    }
+
+    public JTextField getAmountTF() {
+        return amountTF;
+    }
+    
+    
 
     public void setBalanceValue(String balanceValue) {
         this.balanceValue.setText(balanceValue);
@@ -30,7 +59,11 @@ public class SendMoney extends javax.swing.JPanel {
     public JPanel getBalancePanel() {
         return balancePanel;
     }
-    
+
+    public JButton getSendMoneyBTN() {
+        return sendMoneyBTN;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,7 +78,7 @@ public class SendMoney extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         amountTF = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        sendMoneyBTN = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 204, 255));
 
@@ -96,12 +129,6 @@ public class SendMoney extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(51, 51, 51));
         jLabel15.setText("ACCOUNT NUMBER");
 
-        accntTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accntTFActionPerformed(evt);
-            }
-        });
-
         jLabel16.setFont(new java.awt.Font("Bahnschrift", 1, 36)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(51, 51, 51));
         jLabel16.setText("SEND MONEY TO:");
@@ -110,14 +137,8 @@ public class SendMoney extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(51, 51, 51));
         jLabel17.setText("AMOUNT");
 
-        amountTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                amountTFActionPerformed(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        jButton1.setText("SEND MONEY");
+        sendMoneyBTN.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        sendMoneyBTN.setText("SEND MONEY");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,7 +146,7 @@ public class SendMoney extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 432, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sendMoneyBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(399, 399, 399))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +184,7 @@ public class SendMoney extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sendMoneyBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -173,26 +194,21 @@ public class SendMoney extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void accntTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accntTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accntTFActionPerformed
-
-    private void amountTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_amountTFActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField accntTF;
     private javax.swing.JTextField amountTF;
     private javax.swing.JPanel balancePanel;
     private javax.swing.JLabel balanceValue;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton sendMoneyBTN;
     // End of variables declaration//GEN-END:variables
-}
+
+
+
+  }

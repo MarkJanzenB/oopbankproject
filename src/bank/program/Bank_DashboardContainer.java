@@ -1,14 +1,17 @@
 
 package bank.program;
 
+import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import bank.program.dashboard.Components.Dashboard;
 import java.awt.HeadlessException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class Bank_DashboardContainer extends javax.swing.JFrame {
@@ -19,23 +22,32 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
     private JLabel authIcon;
     private JLabel transferMoneyIcon;
     private JLabel customerSupportIcon;
+    private JTextField sendMoneyRecepient;
+    private JTextField sendMoneyAmount;
+    private JButton sendMoneyBTN;
     private Bank_PayBillContainer pay_dashboard;
+    private DatabaseImplementations database;
 
     public Bank_DashboardContainer(){
         initComponents();
         initComponentsListeners();
     }
     
-    public Bank_DashboardContainer(UserAccount user) {
-        initComponents();
-        initComponentsListeners();
-        dashboard1.setUser(user);
-        accountDetails1.setUser(user);
-        sendMoney1.setUser(user);
-        pay_dashboard = new Bank_PayBillContainer(user);
-        pay_dashboard.setDashboard(this);
-
-        
+public Bank_DashboardContainer(UserAccount user) {
+    initComponents();
+    initComponentsListeners();
+    dashboard1.setUser(user);
+    accountDetails1.setUser(user);
+    sendMoney1.setUser(user);
+    sendMoney1.setDatabase(new DatabaseImplementations());
+    pay_dashboard = new Bank_PayBillContainer(user);
+    pay_dashboard.setDashboard(this);
+    database = new DatabaseImplementations();
+    this.user = user; // Add this line to assign the user object
+}
+    
+    public void setDatabase(DatabaseImplementations database) {
+        this.database = database;
     }
     
     private void hideDashboard(){
@@ -84,7 +96,15 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+   public void updateBalance() {
+        int userUID = user.getAccountnum();
+        double updatedBalance = database.getBalance(userUID);
+        user.setBalance(updatedBalance);
 
+        // Assuming you have a method in your SendMoney component to update the displayed balance
+        sendMoney1.setBalanceValue(String.valueOf(updatedBalance));
+        dashboard1.setBalanceValue(String.valueOf(updatedBalance));
+    }
     private void initComponentsListeners(){
         
         backIcon.setVisible(false);
@@ -93,7 +113,9 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
                 if(jTabbedPane1.getSelectedIndex() != 0){
                     backIcon.setVisible(false);
                     jTabbedPane1.setSelectedIndex(0);
+
                 }
+                    updateBalance();
             }  
         });
         
@@ -106,6 +128,7 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) {
                jTabbedPane1.setSelectedIndex(1);
                 backIcon.setVisible(true);
+
             }
       });
       
@@ -156,7 +179,38 @@ public class Bank_DashboardContainer extends javax.swing.JFrame {
                 backIcon.setVisible(true);
             }  
         });
+      sendMoneyRecepient = new JTextField();
+      sendMoneyRecepient = sendMoney1.getAccntTF();
+      sendMoneyAmount = new JTextField();
+      sendMoneyAmount = sendMoney1.getAmountTF();
+      sendMoneyBTN = new JButton();
+      sendMoneyBTN = sendMoney1.getSendMoneyBTN();
       
+      
+      sendMoneyBTN.addActionListener(e -> {
+        String recipientAccountNumber = sendMoneyRecepient.getText();
+        Double amount = Double.parseDouble(sendMoneyAmount.getText());
+
+        // Assuming you have a method to retrieve UID by account number
+        int recipientUID = database.getUIDByAccountNumber(sendMoneyRecepient.getText());
+
+        if (recipientUID != -1) {
+            // Get the current user's UID from the user object or wherever it is stored
+            int senderUID = user.getAccountnum();
+            // Call the sendMoney method from the DatabaseImplementations class
+            database.sendMoney(senderUID, recipientUID, amount);
+            
+            // Update the UI or show a message indicating the success or failure of the transaction
+//            user = database.getUpdatedDetails(user.getAccountnum());
+            JOptionPane.showMessageDialog(this, "Money sent successfully!");
+            updateBalance();
+
+            
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid recipient account number!");
+        }
+      });
       
       
       

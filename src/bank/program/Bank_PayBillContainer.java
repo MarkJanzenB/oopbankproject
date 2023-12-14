@@ -48,9 +48,9 @@ public class Bank_PayBillContainer extends javax.swing.JFrame {
         backIcon1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         payBills = new bank.program.dashboard.Components.PayBills();
-        payBillEnergy = new bank.PayBillComponents.PayBillEnergy();
-        payBillWater = new bank.PayBillComponents.PayBillWater();
-        payBillInternet = new bank.PayBillComponents.PayBillInternet();
+        payBillEnergy1 = new bank.PayBillComponents.PayBillEnergy();
+        payBillWater1 = new bank.PayBillComponents.PayBillWater();
+        payBillInternet1 = new bank.PayBillComponents.PayBillInternet();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,9 +66,9 @@ public class Bank_PayBillContainer extends javax.swing.JFrame {
         MainPanel.add(backIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 40, 40));
 
         jTabbedPane1.addTab("tab5", payBills);
-        jTabbedPane1.addTab("tab2", payBillEnergy);
-        jTabbedPane1.addTab("tab4", payBillWater);
-        jTabbedPane1.addTab("tab3", payBillInternet);
+        jTabbedPane1.addTab("tab2", payBillEnergy1);
+        jTabbedPane1.addTab("tab3", payBillWater1);
+        jTabbedPane1.addTab("tab4", payBillInternet1);
 
         MainPanel.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1190, 670));
 
@@ -153,9 +153,9 @@ public class Bank_PayBillContainer extends javax.swing.JFrame {
     private javax.swing.JLabel backIcon;
     private javax.swing.JLabel backIcon1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private bank.PayBillComponents.PayBillEnergy payBillEnergy;
-    private bank.PayBillComponents.PayBillInternet payBillInternet;
-    private bank.PayBillComponents.PayBillWater payBillWater;
+    private bank.PayBillComponents.PayBillEnergy payBillEnergy1;
+    private bank.PayBillComponents.PayBillInternet payBillInternet1;
+    private bank.PayBillComponents.PayBillWater payBillWater1;
     private bank.program.dashboard.Components.PayBills payBills;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,7 +49,6 @@ public class PayBillWater extends javax.swing.JPanel {
         jLabel1.setText("Pay Water Bill");
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField1.setText("jTextField1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Pay to:");

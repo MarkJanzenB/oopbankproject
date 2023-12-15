@@ -11,9 +11,9 @@ public class PanelActionDELETE extends javax.swing.JPanel {
         initComponents();
     }
    
-    public void initEvent(TableActionEventDELETE  event, int row){
+    public void initEvent(TableActionEventDELETE  event, int row, int column){
         deleteBTN.addActionListener( e -> {
-            event.onDelete(row);
+            event.onDelete(row, column);
         });
     }
 

@@ -230,7 +230,6 @@ public class Bank_PayBillContainer extends javax.swing.JFrame {
          sendBTN_Internet.addActionListener(e -> {
                 try {
                     if(user.getBalance() >= Double.valueOf(AmountMoney_Internet.getText())){
-                        System.out.println("INSIDE IS TRUE");
                     database.recordTransactionBills(
                             user.getAccountnum(),
                             sendToTF_Internet.getText() ,

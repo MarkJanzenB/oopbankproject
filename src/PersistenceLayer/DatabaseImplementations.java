@@ -2,11 +2,15 @@ package PersistenceLayer;
 
 import bank.classes.UserAccount;
 import bank.program.dashboard.Components.AccountDetails;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -81,30 +85,7 @@ public class DatabaseImplementations implements DatabaseInterface{
         this.con = con;
     }
        
-//public UserAccount getUpdatedDetails(int accountNumber) {
-//    // Assuming stmt is your PreparedStatement or Statement
-//    String query = "SELECT * FROM users WHERE UID = ?";
-//    try (PreparedStatement stmt = con.prepareStatement(query)) {
-//        stmt.setInt(1, accountNumber);
-//        ResultSet rs = stmt.executeQuery();
-//
-//        if (rs.next()) {
-//                stmt.setDouble(8, user.getBalance());
-//               
-//                stmt.executeUpdate();
-//                stmt.close();
-//              // ...
-//        } else {
-//            // Handle the case where no rows were returned
-//            return null;
-//        }
-//    } catch (SQLException e) {
-//        e.printStackTrace(); // Handle or log the exception
-//        return null;
-//    }
-//        return null;
-//}
-      
+
         private void updateBalance(Connection con, int uid, double newBalance) throws SQLException {
             String updateQuery = "UPDATE users SET balance = ? WHERE UID = ?";
             try (PreparedStatement st = con.prepareStatement(updateQuery)) {
@@ -305,5 +286,63 @@ public class DatabaseImplementations implements DatabaseInterface{
             }
             return null; // Return null if no user found with the given UID
         }
+        
+       public ArrayList<UserAccount> getAllUsers() {
+                ArrayList<UserAccount> userList = new ArrayList<>();
+                String query = "SELECT * FROM users";
 
+                try (Connection con = DriverManager.getConnection(url, userName, passWord);
+                     PreparedStatement st = con.prepareStatement(query);
+                     ResultSet rs = st.executeQuery()) {
+
+                    while (rs.next()) {
+                        UserAccount user = new UserAccount();
+                                user.setAccountnum(Integer.valueOf(rs.getString(("UID"))));
+                                user.setFirstname(rs.getString("firstname"));
+                                user.setLastname(rs.getString("lastname"));
+                                user.setAddress(rs.getString("address"));
+                                user.setmobileNumber(rs.getString("phone_num"));
+                                user.setPin(rs.getString("pin_num"));
+                                user.setEmail(rs.getString("email"));
+                                user.setPassword(rs.getString("password"));
+                                user.setBalance(Double.valueOf(rs.getString("balance")));
+                        userList.add(user);
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("Error while fetching all users: " + ex.getMessage());
+                }
+                return userList;
+}
+        
+        public int getNumberOfRows(){
+           String query = "SELECT COUNT(*) AS total_rows FROM users";
+           int totalUsers = 0;
+              
+            try {
+                Connection con = DriverManager.getConnection(url, userName, passWord);
+                PreparedStatement st = con.prepareStatement(query);
+                
+                //this will get the total number of rows in DB
+                ResultSet rs = st.executeQuery();
+                if(rs.next())
+                    totalUsers = rs.getInt("total_rows");
+            }
+            catch(SQLException ex){
+                 System.out.println("ERROR IN GETTING nmber of USERS");
+            }
+            return totalUsers;
+        }
+        
+        public void deleteUser(String UID){
+            String query = "DELETE FROM users WHERE UID = ?";
+            try{
+                Connection con = DriverManager.getConnection(url, userName, passWord);
+                PreparedStatement st = con.prepareStatement(query);
+                
+                st.setInt(1, Integer.valueOf(UID));
+                st.executeUpdate();
+            }catch (SQLException ex) {
+               ex.printStackTrace();
+            }
+        }
 }

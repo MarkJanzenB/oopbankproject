@@ -19,7 +19,7 @@ public class TableActionCellEditorDELETE extends DefaultCellEditor{
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
         PanelActionDELETE action = new PanelActionDELETE();  
-        action.initEvent(event, row);
+        action.initEvent(event, row, column);
         action.setBackground(table.getSelectionBackground());
         return action;
     }

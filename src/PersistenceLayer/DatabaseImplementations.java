@@ -16,7 +16,7 @@ public class DatabaseImplementations implements DatabaseInterface{
     private String url = "jdbc:mysql://localhost:3306/oopbank";
     private String userName = "root";   
     private String passWord = "";
-    private Connection con;
+    private Connection con; 
 
     public DatabaseImplementations() {
     }
@@ -106,12 +106,12 @@ public class DatabaseImplementations implements DatabaseInterface{
 //}
       
         private void updateBalance(Connection con, int uid, double newBalance) throws SQLException {
-        String updateQuery = "UPDATE users SET balance = ? WHERE UID = ?";
-        try (PreparedStatement st = con.prepareStatement(updateQuery)) {
-            st.setDouble(1, newBalance);
-            st.setInt(2, uid);
-            st.executeUpdate();
-        }
+            String updateQuery = "UPDATE users SET balance = ? WHERE UID = ?";
+            try (PreparedStatement st = con.prepareStatement(updateQuery)) {
+                st.setDouble(1, newBalance);
+                st.setInt(2, uid);
+                st.executeUpdate();
+            }
     }
 
     private void recordTransaction(Connection con, int senderUID, int recipientUID, double amount, String transType, String transDesc) throws SQLException {
@@ -123,21 +123,38 @@ public class DatabaseImplementations implements DatabaseInterface{
             st.setInt(4, senderUID);
             st.executeUpdate();
         }
-    }  
+    }
+    
+    public void recordTransactionBills(int senderUID, String biller, double amount, String transType, String transDesc) throws SQLException {
+        String insertQuery = "INSERT INTO transactions (transDate, transAmt, transType, transDesc, UID) VALUES (CURDATE(), ?, ?, ?, ?)";
+            try (Connection con = DriverManager.getConnection(url, userName, passWord);
+        PreparedStatement st = con.prepareStatement(insertQuery)) {
+            
+            st.setDouble(1, amount);
+            st.setString(2, transType);
+            st.setString(3, transDesc);
+            st.setInt(4, senderUID);
+            st.executeUpdate();
+        }
+        
+    }
+    
+    public void updateUserBalance(int uid, double newBalance) throws SQLException{
+        String updateQuery = "UPDATE users SET balance = ? WHERE UID = ?";
+            try (Connection con = DriverManager.getConnection(url, userName, passWord);
+                 PreparedStatement st = con.prepareStatement(updateQuery)) {
+                    st.setDouble(1, newBalance);
+                    st.setInt(2, uid);
+                    st.executeUpdate();
+            }
+    }
       
     public DatabaseImplementations(UserAccount user) {
         this.user = user;
     }
-
-    @Override
-    public boolean checkConnection(Connection con) throws SQLException{
-        
-//       if(con)
-        return false;
-    }
     
 
-        public double getBalance(int uid) {
+    public double getBalance(int uid) {
         String query = "SELECT balance FROM users WHERE UID = ?";
 
         try (Connection con = DriverManager.getConnection(url, userName, passWord);
@@ -288,4 +305,5 @@ public class DatabaseImplementations implements DatabaseInterface{
             }
             return null; // Return null if no user found with the given UID
         }
+
 }

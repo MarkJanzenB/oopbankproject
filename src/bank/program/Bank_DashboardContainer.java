@@ -55,6 +55,7 @@ public Bank_DashboardContainer(UserAccount user) {
     
     public void setDatabase(DatabaseImplementations database) {
         this.database = database;
+        pay_dashboard.setDatabase(database);
     }
     
     private void hideDashboard(){
@@ -257,6 +258,14 @@ public Bank_DashboardContainer(UserAccount user) {
       
       
       
+    }
+
+    public void setUser(UserAccount user) {
+        this.user = user;
+    }
+    
+    public UserAccount getUser() {
+        return user;
     }
     
     public static void main(String[] args) {

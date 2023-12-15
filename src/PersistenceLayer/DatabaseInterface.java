@@ -12,6 +12,5 @@ public interface DatabaseInterface {
     
     void insertNewUser(UserAccount user);
     UserAccount checkUserAndGetCredentials(String email, String password);
-    boolean checkConnection(Connection con) throws SQLException;
-
+    
 }

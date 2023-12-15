@@ -276,13 +276,13 @@ public class Bank_PayBillContainer extends javax.swing.JFrame {
                             sendToTF_Water.getText() ,
                             Double.parseDouble(AmountMoney_Water.getText()),
                             "Pay Bills",
-                            "Internet Bills");
+                            "Water Bills");
                     
                     //update the user balance in db
                     database.updateUserBalance(user.getAccountnum(), 
                             Math.abs(user.getBalance()- Double.valueOf(AmountMoney_Water.getText())));
                     
-                    JOptionPane.showMessageDialog(null, "INTERNET BILL PAID SUCCESSFULLY!",
+                    JOptionPane.showMessageDialog(null, "WATER BILL PAID SUCCESSFULLY!",
                     "SUCCESSFULL", JOptionPane.WARNING_MESSAGE);
                     //updating the current user balance in program
                     user.setBalance(Math.abs(user.getBalance()- Double.valueOf(AmountMoney_Water.getText())));

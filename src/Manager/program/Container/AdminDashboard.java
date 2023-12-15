@@ -113,7 +113,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         TabbedpaneHolder = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         creatUsers1 = new Manager.Components.CreatUsers();
-        updateUser1 = new Manager.Components.UpdateUser();
+        updateUser2 = new Manager.Components.UpdateUser();
         deleteUser1 = new Manager.Components.DeleteUser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,7 +162,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         TabbedpaneHolder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.addTab("tab3", creatUsers1);
-        jTabbedPane1.addTab("tab2", updateUser1);
+        jTabbedPane1.addTab("tab3", updateUser2);
         jTabbedPane1.addTab("tab3", deleteUser1);
 
         TabbedpaneHolder.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1040, 630));
@@ -227,6 +227,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel updateIcon;
-    private Manager.Components.UpdateUser updateUser1;
+    private Manager.Components.UpdateUser updateUser2;
     // End of variables declaration//GEN-END:variables
 }

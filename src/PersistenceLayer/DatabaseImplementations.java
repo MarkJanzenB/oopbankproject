@@ -228,6 +228,21 @@ public class DatabaseImplementations implements DatabaseInterface{
         
         return user;
     }
+    
+    public void updatePin(int uid, String newPin) {
+    String updateQuery = "UPDATE users SET pin_num = ? WHERE UID = ?";
+    try (Connection con = DriverManager.getConnection(url, userName, passWord);
+         PreparedStatement st = con.prepareStatement(updateQuery)) {
+
+        st.setString(1, newPin);
+        st.setInt(2, uid);
+        st.executeUpdate();
+    } catch (SQLException e) {
+        // Handle any SQL exceptions (e.g., log or rethrow)
+        e.printStackTrace();
+        throw new RuntimeException("Error while updating PIN", e);
+    }
+}
     public int getUIDByAccountNumber(String recipientAccountNumber) {
     String query = "SELECT UID FROM users WHERE UID = ?";
     
@@ -273,10 +288,4 @@ public class DatabaseImplementations implements DatabaseInterface{
             }
             return null; // Return null if no user found with the given UID
         }
-
-
-
-
-    
-    
 }

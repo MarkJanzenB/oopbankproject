@@ -45,7 +45,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="authIcon" min="-2" max="-2" attributes="0"/>
+                          <Component id="securityIcon" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
               <Component id="balancePanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="authIcon" min="-2" max="-2" attributes="0"/>
+                  <Component id="securityIcon" min="-2" max="-2" attributes="0"/>
                   <Component id="utilityBillsIcon" min="-2" max="-2" attributes="0"/>
                   <Component id="transferMoneyIcon" min="-2" max="-2" attributes="0"/>
                   <Component id="customerSupportIcon" min="-2" max="-2" attributes="0"/>
@@ -230,7 +230,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="authIcon">
+    <Component class="javax.swing.JLabel" name="securityIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Icons/authentication.png"/>

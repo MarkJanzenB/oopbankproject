@@ -5,45 +5,43 @@ import bank.program.SignUpComponents.*;
 import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import javax.swing.JButton;
+import bank.SecurityComponents.UserPINUpdate;
 import javax.swing.JPasswordField;
 
 
 
 public class UserPINUpdate extends javax.swing.JPanel {
     
-    
-    
-    
     private UserAccount user;
+    private DatabaseImplementations database;
 
     public UserPINUpdate() {
         initComponents();
     }
 
     public void setUser(UserAccount user) {
-        this.user = user;
+        this.user = user;  
+    }
+
+    public void setDatabase(DatabaseImplementations database) {
+        this.database = database;
+    }
+
+    public JPasswordField getNewpinTF() {
+        return newpinTF;
     }
 
     public JPasswordField getPinTF() {
         return pinTF;
     }
-    
-    public JPasswordField getNewpinTF() {
-        return newpinTF;
-    }
-
-    public void setNewpinTF(JPasswordField newpinTF) {
-        this.newpinTF = newpinTF;
-    }
 
 
-    public void setjPasswordField1(JPasswordField jPasswordField1) {
-        this.pinTF = jPasswordField1;
-    }
-    
+
     public JButton getDoneBTN() {
         return DoneBTN;
     }
+
+
     
     //one method that calls dao
     
@@ -59,7 +57,7 @@ public class UserPINUpdate extends javax.swing.JPanel {
         newpinTF = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(0, 153, 255));
-        setPreferredSize(new java.awt.Dimension(737, 596));
+        setPreferredSize(new java.awt.Dimension(1165, 589));
 
         jLabel1.setFont(new java.awt.Font("Bahnschrift", 1, 36)); // NOI18N
         jLabel1.setText("Security Details");
@@ -69,6 +67,11 @@ public class UserPINUpdate extends javax.swing.JPanel {
 
         DoneBTN.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         DoneBTN.setText("DONE");
+        DoneBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoneBTNActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel3.setText("Enter new Pin");
@@ -77,31 +80,32 @@ public class UserPINUpdate extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(261, 261, 261))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(DoneBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(newpinTF)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pinTF, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(303, 303, 303))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(newpinTF)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(pinTF)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(486, 486, 486))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(DoneBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(68, 68, 68)
+                .addGap(66, 66, 66)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pinTF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -109,11 +113,14 @@ public class UserPINUpdate extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newpinTF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(DoneBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(200, 200, 200))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DoneBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneBTNActionPerformed
+    }//GEN-LAST:event_DoneBTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

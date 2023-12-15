@@ -24,8 +24,8 @@ public class Dashboard extends javax.swing.JPanel {
             
     }
 
-    public JLabel getAuthIcon() {
-        return authIcon;
+    public JLabel getSecurityIcon() {
+        return securityIcon;
     }
 
     public JLabel getBalanceValue() {
@@ -66,7 +66,7 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         balanceValue = new javax.swing.JLabel();
         utilityBillsIcon = new javax.swing.JLabel();
-        authIcon = new javax.swing.JLabel();
+        securityIcon = new javax.swing.JLabel();
         transferMoneyIcon = new javax.swing.JLabel();
         customerSupportIcon = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -129,8 +129,8 @@ public class Dashboard extends javax.swing.JPanel {
         utilityBillsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/payment (1).png"))); // NOI18N
         utilityBillsIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        authIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/authentication.png"))); // NOI18N
-        authIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        securityIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/authentication.png"))); // NOI18N
+        securityIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         transferMoneyIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/money-transfer.png"))); // NOI18N
         transferMoneyIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -179,7 +179,7 @@ public class Dashboard extends javax.swing.JPanel {
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(authIcon)
+                            .addComponent(securityIcon)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addComponent(jLabel13)))
@@ -215,7 +215,7 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(balancePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(authIcon)
+                    .addComponent(securityIcon)
                     .addComponent(utilityBillsIcon)
                     .addComponent(transferMoneyIcon)
                     .addComponent(customerSupportIcon))
@@ -231,7 +231,6 @@ public class Dashboard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel authIcon;
     private javax.swing.JPanel balancePanel;
     private javax.swing.JLabel balanceValue;
     private javax.swing.JLabel customerSupportIcon;
@@ -244,6 +243,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel securityIcon;
     private javax.swing.JLabel transferMoneyIcon;
     private javax.swing.JLabel userName;
     private javax.swing.JLabel utilityBillsIcon;

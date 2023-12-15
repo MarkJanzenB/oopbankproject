@@ -148,14 +148,6 @@ public Bank_DashboardContainer(UserAccount user) {
 
             }
       });
-      
-//      sendMoneyBalancePanel = new JPanel();
-//      sendMoneyBalancePanel = sendMoney1.getBalancePanel();
-//      sendMoneyBalancePanel.addMouseListener(new MouseAdapter(){
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//            }
-//      });
 
       
       utilityBillsIcon = new JLabel();

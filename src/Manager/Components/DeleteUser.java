@@ -29,7 +29,7 @@ public class DeleteUser extends javax.swing.JPanel {
         database = new DatabaseImplementations();
         results = new ArrayList<>();
         results = database.getAllUsers();
-        data = new String[3];
+        data = new String[4];
 
         TableActionEventDELETE event;
         event = new TableActionEventDELETE() {
@@ -41,14 +41,8 @@ public class DeleteUser extends javax.swing.JPanel {
                     jTable1.getCellEditor().stopCellEditing();
                 }
                 DefaultTableModel  model = (DefaultTableModel)jTable1.getModel();
+                database.deleteUser(jTable1.getValueAt(row, 2).toString());   
                 model.removeRow(row);
-                
-                cellValue = jTable1.getValueAt(row, column);
-                
-                if (cellValue != null) {         
-                    database.deleteUser(cellValue.toString());   
-                }
-              
             }
         };
         
@@ -62,6 +56,7 @@ public class DeleteUser extends javax.swing.JPanel {
                     data[0] = results.get(i).getFirstname();
                     data[1] = results.get(i).getLastname();
                     data[2] = String.valueOf(results.get(i).getAccountnum());
+                    data[3] = "";
                     addRowToTable(data);
                 }
             else {
@@ -102,7 +97,7 @@ public class DeleteUser extends javax.swing.JPanel {
             }
         });
         jTable1.setMaximumSize(new java.awt.Dimension(60, 160));
-        jTable1.setRowHeight(48);
+        jTable1.setRowHeight(45);
         jTable1.setSelectionBackground(new java.awt.Color(57, 137, 111));
         jTable1.setShowGrid(false);
         jScrollPane1.setViewportView(jTable1);

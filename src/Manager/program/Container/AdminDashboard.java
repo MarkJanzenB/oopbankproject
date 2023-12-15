@@ -2,12 +2,25 @@ package Manager.program.Container;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class AdminDashboard extends javax.swing.JFrame {
+    
+    private JTextField firstName;
+    private JTextField LastName;
+    private JTextField address;
+    private JTextField phone_number;
+    private JTextField email;
+    private JPasswordField password;
+    private JButton createBTN;
+    
 
     public AdminDashboard() {
         initComponents();
         initIcons();
+        initListeners();
     }
 
     private void initIcons() {
@@ -31,6 +44,36 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
 
     }
+    
+       private void initListeners(){
+           firstName = new JTextField();
+           firstName = creatUsers2.getFirstNameTF();
+           
+           LastName = new JTextField();
+           firstName = creatUsers2.getLastNameTF();
+           
+           address = new JTextField();
+           address = creatUsers2.getAddressTF();
+           
+           phone_number = new JTextField();
+           phone_number = creatUsers2.getPhoneNumberTF();
+           
+           email = new JTextField();
+           email = creatUsers2.getEmailTF();
+           
+           password = new JPasswordField();
+           password = creatUsers2.getPassWordTF();
+           
+           createBTN = new JButton();
+           createBTN = creatUsers2.getCreateBTN();
+           
+           createBTN.addActionListener(e -> {
+              
+               System.out.println("Create Button Clicked");
+           
+           });
+           
+        }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -43,7 +86,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         deleteIcon = new javax.swing.JLabel();
         TabbedpaneHolder = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        creatUsers1 = new Manager.Components.CreatUsers();
+        creatUsers2 = new Manager.Components.CreatUsers();
         updateUser1 = new Manager.Components.UpdateUser();
         deleteUser1 = new Manager.Components.DeleteUser();
 
@@ -92,7 +135,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         TabbedpaneHolder.setBackground(new java.awt.Color(51, 255, 255));
         TabbedpaneHolder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addTab("tab1", creatUsers1);
+        jTabbedPane1.addTab("tab3", creatUsers2);
         jTabbedPane1.addTab("tab2", updateUser1);
         jTabbedPane1.addTab("tab3", deleteUser1);
 
@@ -150,7 +193,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TabbedpaneHolder;
-    private Manager.Components.CreatUsers creatUsers1;
+    private Manager.Components.CreatUsers creatUsers2;
     private javax.swing.JLabel createIcon;
     private javax.swing.JLabel deleteIcon;
     private Manager.Components.DeleteUser deleteUser1;

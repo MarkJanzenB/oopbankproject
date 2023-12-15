@@ -33,7 +33,7 @@ public class DeleteUser extends javax.swing.JPanel {
 
         TableActionEventDELETE event;
         event = new TableActionEventDELETE() {
-            //here transform the resltset to array
+            
             @Override
             public void onDelete(int row, int column) {
               

@@ -1,6 +1,10 @@
 
 package Manager.Components;
 
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 
 public class CreatUsers extends javax.swing.JPanel {
 
@@ -11,7 +15,33 @@ public class CreatUsers extends javax.swing.JPanel {
         initComponents();
     }
 
- 
+    public JTextField getAddressTF() {
+        return addressTF;
+    }
+
+    public JButton getCreateBTN() {
+        return createBTN;
+    }
+
+    public JTextField getEmailTF() {
+        return emailTF;
+    }
+
+    public JTextField getFirstNameTF() {
+        return firstNameTF;
+    }
+
+    public JTextField getLastNameTF() {
+        return lastNameTF;
+    }
+
+    public JPasswordField getPassWordTF() {
+        return passwordTF;
+    }
+
+    public JTextField getPhoneNumberTF() {
+        return phoneNumberTF;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -19,7 +49,6 @@ public class CreatUsers extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        passTF = new javax.swing.JTextField();
         firstNameTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         lastNameTF = new javax.swing.JTextField();
@@ -30,6 +59,7 @@ public class CreatUsers extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         createBTN = new javax.swing.JButton();
+        passwordTF = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -83,12 +113,12 @@ public class CreatUsers extends javax.swing.JPanel {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(passTF)
                             .addComponent(addressTF)
                             .addComponent(lastNameTF)
                             .addComponent(firstNameTF)
                             .addComponent(phoneNumberTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                            .addComponent(emailTF))))
+                            .addComponent(emailTF)
+                            .addComponent(passwordTF))))
                 .addContainerGap(370, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -103,7 +133,7 @@ public class CreatUsers extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -124,10 +154,10 @@ public class CreatUsers extends javax.swing.JPanel {
                     .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passTF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(createBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +182,7 @@ public class CreatUsers extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField lastNameTF;
-    private javax.swing.JTextField passTF;
+    private javax.swing.JPasswordField passwordTF;
     private javax.swing.JTextField phoneNumberTF;
     // End of variables declaration//GEN-END:variables
 }

@@ -293,15 +293,19 @@ public class DatabaseImplementations implements DatabaseInterface{
 
                 try (Connection con = DriverManager.getConnection(url, userName, passWord);
                      PreparedStatement st = con.prepareStatement(query);
-                     ResultSet results = st.executeQuery()) {
+                     ResultSet rs = st.executeQuery()) {
 
-                    while (results.next()) {
+                    while (rs.next()) {
                         UserAccount user = new UserAccount();
-                        user.setAccountnum(results.getInt("UID"));
-                        user.setFirstname(results.getString("firstname"));
-                        user.setLastname(results.getString("lastname"));
-                        // Set other user properties similarly
-
+                                user.setAccountnum(Integer.valueOf(rs.getString(("UID"))));
+                                user.setFirstname(rs.getString("firstname"));
+                                user.setLastname(rs.getString("lastname"));
+                                user.setAddress(rs.getString("address"));
+                                user.setmobileNumber(rs.getString("phone_num"));
+                                user.setPin(rs.getString("pin_num"));
+                                user.setEmail(rs.getString("email"));
+                                user.setPassword(rs.getString("password"));
+                                user.setBalance(Double.valueOf(rs.getString("balance")));
                         userList.add(user);
                     }
                 } catch (SQLException ex) {

@@ -1,5 +1,7 @@
 package Manager.program.Container;
 
+import PersistenceLayer.DatabaseImplementations;
+import bank.classes.UserAccount;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -13,16 +15,24 @@ public class AdminDashboard extends javax.swing.JFrame {
     private JTextField address;
     private JTextField phone_number;
     private JTextField email;
+    private JPasswordField pin;
     private JPasswordField password;
     private JButton createBTN;
+    private DatabaseImplementations database;
+    private UserAccount user;
     
 
     public AdminDashboard() {
         initComponents();
         initIcons();
         initListeners();
+        database = new DatabaseImplementations();
     }
 
+    public void setDatabase(DatabaseImplementations database) {
+        this.database = database;
+    }
+    
     private void initIcons() {
 
         createIcon.addMouseListener(new MouseAdapter() {
@@ -46,31 +56,47 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
     
        private void initListeners(){
+           
+           user = new UserAccount();
+           
            firstName = new JTextField();
-           firstName = creatUsers2.getFirstNameTF();
+           firstName = creatUsers1.getFirstNameTF();
            
            LastName = new JTextField();
-           firstName = creatUsers2.getLastNameTF();
+           LastName = creatUsers1.getLastNameTF();
            
            address = new JTextField();
-           address = creatUsers2.getAddressTF();
+           address = creatUsers1.getAddressTF();
            
            phone_number = new JTextField();
-           phone_number = creatUsers2.getPhoneNumberTF();
+           phone_number = creatUsers1.getPhoneNumberTF();
            
            email = new JTextField();
-           email = creatUsers2.getEmailTF();
+           email = creatUsers1.getEmailTF();
            
            password = new JPasswordField();
-           password = creatUsers2.getPassWordTF();
+           password = creatUsers1.getPassWordTF();
+           
+           pin = new JPasswordField();
+           pin = creatUsers1.getPinTF();
            
            createBTN = new JButton();
-           createBTN = creatUsers2.getCreateBTN();
+           createBTN = creatUsers1.getCreateBTN();
            
            createBTN.addActionListener(e -> {
-              
-               System.out.println("Create Button Clicked");
-           
+               
+               user = new UserAccount();
+               user.setFirstname(firstName.getText());
+               user.setLastname(LastName.getText());
+               user.setAddress(address.getText());
+               user.setmobileNumber(phone_number.getText());
+               user.setEmail(email.getText());
+               user.setPassword(String.valueOf(password.getPassword()));
+               user.setPin(String.valueOf(pin.getPassword()));
+               
+               if(user != null){
+                   database.insertNewUser(user);
+               }
            });
            
         }
@@ -86,7 +112,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         deleteIcon = new javax.swing.JLabel();
         TabbedpaneHolder = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        creatUsers2 = new Manager.Components.CreatUsers();
+        creatUsers1 = new Manager.Components.CreatUsers();
         updateUser1 = new Manager.Components.UpdateUser();
         deleteUser1 = new Manager.Components.DeleteUser();
 
@@ -135,7 +161,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         TabbedpaneHolder.setBackground(new java.awt.Color(51, 255, 255));
         TabbedpaneHolder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addTab("tab3", creatUsers2);
+        jTabbedPane1.addTab("tab3", creatUsers1);
         jTabbedPane1.addTab("tab2", updateUser1);
         jTabbedPane1.addTab("tab3", deleteUser1);
 
@@ -193,7 +219,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TabbedpaneHolder;
-    private Manager.Components.CreatUsers creatUsers2;
+    private Manager.Components.CreatUsers creatUsers1;
     private javax.swing.JLabel createIcon;
     private javax.swing.JLabel deleteIcon;
     private Manager.Components.DeleteUser deleteUser1;

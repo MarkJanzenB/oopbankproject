@@ -210,6 +210,7 @@ public class Bank_LogIn extends javax.swing.JFrame {
                    if(user != null){                 
                     this.dispose();
                     dashboard = new Bank_DashboardContainer(user);
+                    dashboard.setDatabase(dao);
                     dashboard.setVisible(true);     
                    }
                    else{

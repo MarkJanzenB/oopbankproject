@@ -81,29 +81,40 @@ public class DatabaseImplementations implements DatabaseInterface{
         this.con = con;
     }
        
-//public UserAccount getUpdatedDetails(int accountNumber) {
-//    // Assuming stmt is your PreparedStatement or Statement
-//    String query = "SELECT * FROM users WHERE UID = ?";
-//    try (PreparedStatement stmt = con.prepareStatement(query)) {
-//        stmt.setInt(1, accountNumber);
-//        ResultSet rs = stmt.executeQuery();
-//
-//        if (rs.next()) {
-//                stmt.setDouble(8, user.getBalance());
-//               
-//                stmt.executeUpdate();
-//                stmt.close();
-//              // ...
-//        } else {
-//            // Handle the case where no rows were returned
-//            return null;
-//        }
-//    } catch (SQLException e) {
-//        e.printStackTrace(); // Handle or log the exception
-//        return null;
-//    }
-//        return null;
-//}
+    public boolean validateUID(int uid) {
+        String query = "SELECT * FROM users WHERE UID = ?";
+        try (Connection con = DriverManager.getConnection(url, userName, passWord);
+             PreparedStatement st = con.prepareStatement(query)) {
+
+            st.setInt(1, uid);
+
+            try (ResultSet rs = st.executeQuery()) {
+                return rs.next(); // Returns true if the UID exists, false otherwise
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Method to validate the PIN for a given UID
+    public boolean validatePIN(int uid, String pin) {
+        String query = "SELECT * FROM users WHERE UID = ? AND pin_num = ?";
+        try (Connection con = DriverManager.getConnection(url, userName, passWord);
+             PreparedStatement st = con.prepareStatement(query)) {
+
+            st.setInt(1, uid);
+            st.setString(2, pin);
+
+            try (ResultSet rs = st.executeQuery()) {
+                return rs.next(); // Returns true if the UID and PIN combination is valid, false otherwise
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
       
         private void updateBalance(Connection con, int uid, double newBalance) throws SQLException {
             String updateQuery = "UPDATE users SET balance = ? WHERE UID = ?";

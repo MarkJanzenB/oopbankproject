@@ -3,5 +3,5 @@ package CustomTableCell;
 
 
 public interface TableActionEventDELETE {
-        public void onDelete(int row);
+        public void onDelete(int row, int column);
 }

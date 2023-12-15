@@ -6,31 +6,69 @@ import CustomTableCell.TableActionCellRenderDELETE;
 import CustomTableCell.TableActionCellRenderEDIT;
 import javax.swing.JOptionPane;
 import CustomTableCell.TableActionEventDELETE;
+import PersistenceLayer.DatabaseImplementations;
+import bank.classes.UserAccount;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 
 public class DeleteUser extends javax.swing.JPanel {
-
-      private String[] users;
+    
+    private DatabaseImplementations database;
+    private ArrayList<UserAccount> results;
+    private String[] data;
+    private String value;
+    private Object cellValue; 
+    
     public DeleteUser() {
         initComponents();
-        String[] resultSet = {"Ac", "Espina", "1000"};
-        TableActionEventDELETE event = new TableActionEventDELETE() {
+        database = new DatabaseImplementations();
+        results = new ArrayList<>();
+        results = database.getAllUsers();
+        data = new String[3];
+
+        TableActionEventDELETE event;
+        event = new TableActionEventDELETE() {
+            //here transform the resltset to array
             @Override
-            public void onDelete(int row) {
-                //JOptionPane.showMessageDialog(null, "DELETE PANEL WILL BE OPEN");
+            public void onDelete(int row, int column) {
+              
                 if(jTable1.isEditing()){
                     jTable1.getCellEditor().stopCellEditing();
                 }
                 DefaultTableModel  model = (DefaultTableModel)jTable1.getModel();
                 model.removeRow(row);
+                
+                cellValue = jTable1.getValueAt(row, column);
+                
+                if (cellValue != null) {         
+                    database.deleteUser(cellValue.toString());   
+                }
+              
             }
         };
+        
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRenderDELETE());
         jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditorDELETE(event));
         
-        for (int i = 0; i < 5; i++) {
-            addRowToTable(resultSet);
+        //Adding data to table
+         try {
+             if(results.size() != 0)   
+                for (int i = 0; i < results.size(); i++) {
+                    data[0] = results.get(i).getFirstname();
+                    data[1] = results.get(i).getLastname();
+                    data[2] = String.valueOf(results.get(i).getAccountnum());
+                    addRowToTable(data);
+                }
+            else {
+                System.out.println("ResultSet is null. Error retrieving data.");
+            }
+      } catch (Exception ex) {
+            System.out.println("Error in displaying data in Delete User Table: " + ex.getMessage());
         }
     }
 
@@ -94,11 +132,11 @@ public class DeleteUser extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addRowToTable(Object[] data){
+    private void addRowToTable(Object[] data){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.addRow(data);
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

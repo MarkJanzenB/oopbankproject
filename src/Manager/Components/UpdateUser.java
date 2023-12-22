@@ -1,23 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package Manager.Components;
 
 import CustomTableCell.TableActionCellEditorEDIT;
 import CustomTableCell.TableActionCellRenderEDIT;
 import CustomTableCell.TableActionEventEDIT;
+import PersistenceLayer.DatabaseImplementations;
+import bank.classes.UserAccount;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class UpdateUser extends javax.swing.JPanel {
 
-  private String[] users;
+    private DatabaseImplementations database;
+    private ArrayList<UserAccount> results;
+    private UserAccount user;
+    private String[] data;
   
     public UpdateUser() {
+  
+        database = new DatabaseImplementations();
+        results = new ArrayList<>();
+        results = database.getAllUsers();
+        data = new String[4];
+      
+        
         initComponents();
          TableActionEventEDIT event = new TableActionEventEDIT() {
             @Override
@@ -28,14 +39,37 @@ public class UpdateUser extends javax.swing.JPanel {
         
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRenderEDIT());
         jTable1.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditorEDIT(event));
+        
+        try {
+             if(results.size() != 0)   
+                for (int i = 0; i < results.size(); i++) {
+                    data[0] = results.get(i).getFirstname();
+                    data[1] = results.get(i).getLastname();
+                    data[2] = String.valueOf(results.get(i).getAccountnum());
+                    data[3] = "";
+                    addRowToTable(data);
+                }
+            else {
+                System.out.println("ResultSet is null. Error retrieving data.");
+            }
+        } catch (Exception ex) {
+            System.out.println("Error in displaying data in Update User Table: " + ex.getMessage());
+         }
+
+    }   
+    public void setUsers(UserAccount users) {
+        this.user = user;
     }
 
-    public void setUsers(String[] users) {
-        this.users = users;
-        
-        
-        
+    public void setResults(ArrayList<UserAccount> results) {
+        this.results = results;
     }
+    
+    private void addRowToTable(Object[] data){
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.addRow(data);
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

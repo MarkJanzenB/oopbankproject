@@ -17,14 +17,15 @@ import okhttp3.Response;
 public class BankSMS {
     
     private final String BASE_URL = "https://n8x285.api.infobip.com";
-    private final String API_KEY = "App 2fc86d95c46e5c90232eba0490d5e4df-413e0f23-6497-437d-8bb3-c4bb213e0b4d";
+    private final String API_KEY = "App 9e764f24ec4c25d8507eed7542145901-b786cbcb-d7b9-4384-8c9b-6e4ae9588c8d";
     private final String MEDIA_TYPE = "application/json";
     private final String SENDER = "TeamBangan Bank";
 //    private static final String RECIPIENT = "639452573308";
 //    private String RECIPIENT;
 
     public BankSMS(String pin, String RECIPIENT) {
-            
+        
+        String validnumber = "+63" + RECIPIENT;
         String MESSAGE_TEXT = "Your One Time Pin is " + pin;
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
@@ -32,7 +33,7 @@ public class BankSMS {
             
             String bodyJson = String.format("{\"messages\":[{\"from\":\"%s\",\"destinations\":[{\"to\":\"%s\"}],\"text\":\"%s\"}]}",
                     SENDER,
-                    RECIPIENT,
+                    validnumber,
                     MESSAGE_TEXT
             );
             

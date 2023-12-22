@@ -22,10 +22,12 @@ public class UpdateUser extends javax.swing.JPanel {
     private String[] data;
   
     public UpdateUser() {
+  
         database = new DatabaseImplementations();
         results = new ArrayList<>();
         results = database.getAllUsers();
         data = new String[4];
+      
         
         initComponents();
          TableActionEventEDIT event = new TableActionEventEDIT() {
@@ -50,13 +52,17 @@ public class UpdateUser extends javax.swing.JPanel {
             else {
                 System.out.println("ResultSet is null. Error retrieving data.");
             }
-      } catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("Error in displaying data in Update User Table: " + ex.getMessage());
-        }
-    }
-           
+         }
+
+    }   
     public void setUsers(UserAccount users) {
         this.user = user;
+    }
+
+    public void setResults(ArrayList<UserAccount> results) {
+        this.results = results;
     }
     
     private void addRowToTable(Object[] data){

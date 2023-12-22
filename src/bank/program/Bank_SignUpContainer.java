@@ -62,7 +62,9 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
                 otpPin = 100000 + PinGenerator.nextInt(900000);
                 //incase the SMS will fail the pin can be retrieved in CLI
                 System.out.println("OTP PIN IS: " + otpPin);
-//                new BankSMS(String.valueOf(otpPin), user.getmobileNumber());  COMMENT THIS FOR DEBUGGING ONLY, SMS ARE LIMITED!!
+                
+//                 COMMENT THIS FOR DEBUGGING ONLY, SMS ARE LIMITED!!
+                new BankSMS(String.valueOf(otpPin), user.getmobileNumber()); 
                   securityTF = new JTextField();
                   securityTF = secuirity_Details2.getPinTF();
                   user.setPin(securityTF.getText());
@@ -85,14 +87,17 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
              if (OTPpinTF.getText().equals(String.valueOf(otpPin))  ){
                 dao.insertNewUser(user);
                 user = dao.checkUserAndGetCredentials(user.getEmail(),user.getPassword());
-                dashboard = new Bank_DashboardContainer();
-//                dashboard.setDatabase(new DatabaseImplementations());
+                dashboard = new Bank_DashboardContainer(user);
+                dashboard.setDatabase(new DatabaseImplementations());
+                dashboard.setUser(user);
                 dashboard.setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "OTP invalid");
             }  
         });
+        
+        
         
         
        //This is for the back button
@@ -109,6 +114,10 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
             }  
         });
     
+    }
+
+    public void setUser(UserAccount user) {
+        this.user = user;
     }
     
 
@@ -129,7 +138,7 @@ public class Bank_SignUpContainer extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addTab("tab2", personal_Information1);
+        jTabbedPane1.addTab("tab3", personal_Information1);
         jTabbedPane1.addTab("tab2", secuirity_Details2);
         jTabbedPane1.addTab("tab3", bankOTP1);
 

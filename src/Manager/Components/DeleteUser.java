@@ -30,11 +30,9 @@ public class DeleteUser extends javax.swing.JPanel {
         results = new ArrayList<>();
         results = database.getAllUsers();
         data = new String[4];
-
-        TableActionEventDELETE event;
-        event = new TableActionEventDELETE() {
+       
+        TableActionEventDELETE event = new TableActionEventDELETE() {
             
-            @Override
             public void onDelete(int row, int column) {
               
                 if(jTable1.isEditing()){
@@ -64,7 +62,7 @@ public class DeleteUser extends javax.swing.JPanel {
             }
       } catch (Exception ex) {
             System.out.println("Error in displaying data in Delete User Table: " + ex.getMessage());
-        }
+        }     
     }
 
     @SuppressWarnings("unchecked")
@@ -127,6 +125,10 @@ public class DeleteUser extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setResults(ArrayList<UserAccount> results) {
+        this.results = results;
+    }
+    
     private void addRowToTable(Object[] data){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.addRow(data);

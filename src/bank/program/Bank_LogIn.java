@@ -197,9 +197,11 @@ public class Bank_LogIn extends javax.swing.JFrame {
     private void initListeners(){     
             signInBTN.addActionListener(e -> {
                    this.dispose();
-                   System.out.println("Login user: "+ user);
-//                   bankContainer = new Bank_SignUpContainer(user, dao);
+//                   System.out.println("Login user: "+ user);
                    bankContainer = new Bank_SignUpContainer(dao);
+                   bankContainer.setUser(user);
+//                   bankContainer = new Bank_SignUpContainer(dao);
+                  
                    bankContainer.setVisible(true);
            });
            logInBTN.addActionListener(e -> { 

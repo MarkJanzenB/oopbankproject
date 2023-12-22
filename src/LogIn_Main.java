@@ -3,7 +3,7 @@ import PersistenceLayer.DatabaseImplementations;
 import bank.classes.UserAccount;
 import bank.program.Bank_LogIn;
 
-public class Main {
+public class LogIn_Main {
 
     public static void main(String[] args) {
         UserAccount user = new UserAccount();

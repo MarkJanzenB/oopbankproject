@@ -54,10 +54,10 @@ This project uses [infobib](https://www.infobip.com/?utm_source=google&utm_mediu
 
 ## 🧑‍💻 Contributors:
    - Ac Espina 
-   - Mark Bandola
+   - Mark Janzen Bandola
    - Jenelyn Mendoza
-   - Julianne Aban 
-   - Chris Gracia 
+   - Julianne Kristine Aban 
+   - Chris Eden De Gracia 
 
 ---
 

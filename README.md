@@ -9,6 +9,10 @@ Welcome to the Banking System Program! This software serves as a comprehensive s
     ```bash
     git clone <YOUR_FORKED_REPO_URL> 
     ```
+- Set up the database 
+  
+  - Import the **oopbank.sql** to your database and name it *oopbank* 
+
 - Navigate to the **default package**
   - Choose **Admin_Main.java** for using Admin side
   - Choose **LogIn_Main.java** for using User side
